@@ -4,9 +4,8 @@
   "version": "0.1.0",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview",
-    "postinstall": "chmod +x node_modules/.bin/vite"
+    "build": "npx tsc && npx vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
     "autoprefixer": "^10.4.17",
