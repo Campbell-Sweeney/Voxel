@@ -15,5 +15,4 @@ export interface CartItem extends Product {
 export interface AppConfig {
   password: string;
   announcement: string;
-  products: Product[];
 } 

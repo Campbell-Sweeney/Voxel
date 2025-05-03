@@ -9,6 +9,7 @@ import { CartItem } from './types';
 
 export const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
   const addToCart = (item: CartItem) => {
@@ -36,8 +37,8 @@ export const App = () => {
     );
   };
 
-  if (!isAuthenticated) {
-    return <PasswordScreen onPasswordCorrect={() => setIsAuthenticated(true)} />;
+  if (!isAuthenticated && !isAdmin) {
+    return <PasswordScreen onPasswordCorrect={() => setIsAuthenticated(true)} onAdminLogin={() => setIsAdmin(true)} />;
   }
 
   return (
@@ -49,7 +50,7 @@ export const App = () => {
             <Route path="/" element={<Navigate to="/products" replace />} />
             <Route
               path="/products"
-              element={<Products addToCart={addToCart} />}
+              element={<Products addToCart={addToCart} isAdmin={isAdmin} />}
             />
             <Route
               path="/cart"

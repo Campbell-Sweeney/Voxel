@@ -3,9 +3,10 @@ import { config } from '../utils/config';
 
 interface PasswordScreenProps {
   onPasswordCorrect: () => void;
+  onAdminLogin: () => void;
 }
 
-export const PasswordScreen = ({ onPasswordCorrect }: PasswordScreenProps) => {
+export const PasswordScreen = ({ onPasswordCorrect, onAdminLogin }: PasswordScreenProps) => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [isFocused, setIsFocused] = useState(false);
@@ -14,6 +15,8 @@ export const PasswordScreen = ({ onPasswordCorrect }: PasswordScreenProps) => {
     e.preventDefault();
     if (password === config.password) {
       onPasswordCorrect();
+    } else if (password === 'Voxelpagel') {
+      onAdminLogin();
     } else {
       setError('Incorrect password');
     }
